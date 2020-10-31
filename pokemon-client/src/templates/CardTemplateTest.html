@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CardTemplateStyle.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- front and back cards container -->
+    <div class="card-set">
+      <!-- front card container -->
+      <div class="card-container">
+        <!-- front card content -->
+        <div class="card-face">
+          <div class="card-content">
+            <div class="card-header">
+              <h2>Pikachu</h2>
+            </div>
+
+            <div class="card-img-container">
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+                alt="pikachu"
+                class="pokemon-sprite"
+              />
+              <div class="poke-measure">
+                <!--https://pokeapi.co/api/v2/pokemon/{id or name}/height and weight-->
+                <p class="poke-height">Height: 4</p>
+                <p class="poke-weight">Weight: 60</p>
+              </div>
+            </div>
+
+            <!-- div for the first group of information-->
+            <div class="poke-info">
+              <div class="type-left">
+                <p>Type: <strong>Electric</strong></p>
+                <p>Base experience:<strong>112</strong></p>
+                <p>Base HP: <strong>35</strong></p>
+                <p>Base Attack: <strong>55</strong></p>
+              </div>
+              <div class="type-right">
+                <p>Base Defence: <strong>40</strong></p>
+                <p>Base Special ATK: <strong>50</strong></p>
+                <p>Base Special DEF: <strong>50</strong></p>
+                <p>Base Speed: <strong>90</strong></p>
+              </div>
+            </div>
+
+            <!--div  for the second group of information-->
+            <div class="poke-stats">
+              <div class="stat1">
+                <p>Some kind of stat goes here:<b>Have not decided which</b></p>
+                <p>
+                  Some kind of stat goes here: <b>Have not decided which</b>
+                </p>
+                <p>
+                  Some kind of stat goes here: <b>Have not decided which</b>
+                </p>
+              </div>
+            </div>
+
+            <!-- end of the pokemon information-->
+          </div>
+        </div>
+      </div>
+      <!--End of the front card container-->
+      <!-- Back card container -->
+      <div class="card-container-back">
+        <div class="card-back">
+          <div class="card-content-back"></div>
+        </div>
+      </div>
+      <!-- End Back card container -->
+    </div>
+  </body>
+</html>
