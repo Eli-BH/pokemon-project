@@ -118,8 +118,8 @@
 
 .card-back {
   margin: auto;
-  width: 370px;
-  height: 570px;
+  width: 94%;
+  height: 94%;
   border: solid 1px black;
   background-color: orange;
   background-image: url("https://i.imgur.com/YfRarvn.jpg");
@@ -239,5 +239,17 @@
 
   .card-set {
     display: flex;
+  }
+
+  .card-container-back {
+    margin: auto;
+    width: 200px;
+    height: 300px;
+    border: black solid 2px;
+    background-color: #032f7e;
+    border-radius: 14px;
+    position: relative;
+    display: flex;
+    box-shadow: 8px 12px 12px 1px #222;
   }
 }
