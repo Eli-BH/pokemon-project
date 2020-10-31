@@ -100,9 +100,9 @@
   background-color: hsl(45, 100%, 50%, 0.3);
 }
 
-.card-set {
+/* .card-set {
   display: flex;
-}
+} */
 
 .card-container-back {
   margin: auto;
