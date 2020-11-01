@@ -15,10 +15,16 @@
   /* width: 370px;
   height: 570px; */
   width: 94%;
-  height: 94%;
+  height: 95%;
   border: solid 1px black;
   background-color: orange;
   background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/30751457-a50b-4f4c-a9f2-5a8ee5504f89/d6awe5m-d41ba327-6970-4ab7-8353-6f236d203006.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMzA3NTE0NTctYTUwYi00ZjRjLWE5ZjItNWE4ZWU1NTA0Zjg5XC9kNmF3ZTVtLWQ0MWJhMzI3LTY5NzAtNGFiNy04MzUzLTZmMjM2ZDIwMzAwNi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.6U7xPuU2kkw1m3h_UAzlkQYg5pEIUl7E3n1WcMASUL8");
+}
+
+.poke-name {
+  font-size: 2rem;
+  align-items: center;
+  margin-top: 12px;
 }
 
 .card-content {
@@ -74,6 +80,9 @@
   border-radius: 4px;
   font-family: sans-serif;
 }
+.poke-measure p {
+  margin-top: 1pc;
+}
 
 .poke-info {
   padding: 0;
@@ -89,6 +98,18 @@
 .type-right,
 .type-left {
   opacity: 1;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.type-left ul,
+.type-right ul {
+  padding-top: 20px;
+  line-height: 15px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .poke-stats {
@@ -106,8 +127,8 @@
 
 .card-container-back {
   margin: auto;
-  width: 400px;
-  height: 600px;
+  width: 150px;
+  height: 225px;
   border: black solid 2px;
   background-color: #032f7e;
   border-radius: 14px;
@@ -128,9 +149,17 @@
   background-position: center center;
 }
 
+.stat-list {
+  padding: 0;
+  list-style-type: none;
+  line-height: 25px;
+  align-self: center;
+}
+
 @media screen and (max-width: 886px) {
   p {
     font-size: 7px;
+    margin-top: 10px;
   }
   .card-header h2 {
     font-size: 14px;
@@ -145,6 +174,21 @@
     position: relative;
     display: flex;
     box-shadow: 8px 12px 12px 1px #222;
+  }
+  .type-left ul,
+  .type-right ul {
+    padding-top: 20px;
+    line-height: 2px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .stat-list {
+    padding: 0;
+    list-style-type: none;
+    line-height: 2px;
+    align-self: center;
   }
 
   .card-face {
@@ -227,6 +271,11 @@
   .type-left {
     opacity: 1;
   }
+  .type-right p,
+  .type-left p {
+    opacity: 1;
+    margin-top: 9px;
+  }
 
   .poke-stats {
     height: 100%;
@@ -239,6 +288,10 @@
 
   .card-set {
     display: flex;
+  }
+
+  .stat-list {
+    margin-top: 9px;
   }
 
   .card-container-back {
