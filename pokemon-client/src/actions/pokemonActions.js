@@ -15,7 +15,7 @@ export const getAllPokemonAction = () => async (dispatch) => {
 
     //call for the data
     const { data } = await axios.get(
-      "https://cors-anywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1050"
+      "https://cors-anywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50"
     );
 
     //the returned info from the data have two keys,
@@ -24,8 +24,9 @@ export const getAllPokemonAction = () => async (dispatch) => {
     //and returning the result
 
     const info = data.results.map(async (item) => {
-      const { data } = await axios.get(item.url);
-      return data;
+      const pokemon = await axios.get(item.url);
+      const species = await axios.get(pokemon.data.species.url);
+      return { pokemon: pokemon.data, species: species.data };
     });
 
     //await the map data

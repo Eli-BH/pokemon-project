@@ -16,14 +16,14 @@ const PokemonHomeView = () => {
     dispatch(getAllPokemonAction());
   }, [dispatch]);
 
-  //Get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts =
-    success && pokemon.slice(indexOfFirstPost, indexOfLastPost);
+  // //Get current posts
+  // const indexOfLastPost = currentPage * postsPerPage;
+  // const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  // const currentPosts =
+  //   success && pokemon.slice(indexOfFirstPost, indexOfLastPost);
 
-  //changePage
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  // //changePage
+  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
@@ -31,13 +31,13 @@ const PokemonHomeView = () => {
       {loading ? (
         <h1>loading</h1>
       ) : (
-        success && currentPosts.map((item) => <Card name={item.name} />)
+        success && pokemon.map((item) => <Card item={item} />)
       )}
-      <Paginate
+      {/* <Paginate
         postsPerPage={postsPerPage}
         totalPosts={success && pokemon.length}
         paginate={paginate}
-      />
+      /> */}
     </div>
   );
 };
