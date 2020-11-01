@@ -1,23 +1,25 @@
-import {createStore, applyMiddleware, combineReducers} from 'redux'
-import thunk from 'redux-thunk'
-import {composeWithDevTools} from 'redux-devtools-extension'
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-//reducers 
-const reducer  = combine combineReducers({
+import { getAllPokemonReducer } from "./reducers/pokemonReducers";
 
-})
+//reducers
+const reducer = combineReducers({
+  getAllPokemon: getAllPokemonReducer,
+});
 
 //initial state
-const initialState = {}; 
+const initialState = {};
 
 //middleware
-const middleware = [thunk]
+const middleware = [thunk];
 
 //store
 const store = createStore(
-    reducer, 
-    initialState, 
-    composeWithDevTools(applyMiddleware(...middleware))
-)
+  reducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
 
-export default store
+export default store;

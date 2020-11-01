@@ -1,7 +1,9 @@
 import React from "react";
 
+import PokemonHomeView from "./views/PokemonHomeView";
+
 const App = () => {
-  return <div>Hello from the app component</div>;
+  return <PokemonHomeView />;
 };
 
 export default App;
