@@ -17,8 +17,83 @@
   width: 94%;
   height: 95%;
   border: solid 1px black;
+}
+
+.background-bug {
   background-color: orange;
-  background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/30751457-a50b-4f4c-a9f2-5a8ee5504f89/d6awe5m-d41ba327-6970-4ab7-8353-6f236d203006.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMzA3NTE0NTctYTUwYi00ZjRjLWE5ZjItNWE4ZWU1NTA0Zjg5XC9kNmF3ZTVtLWQ0MWJhMzI3LTY5NzAtNGFiNy04MzUzLTZmMjM2ZDIwMzAwNi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.6U7xPuU2kkw1m3h_UAzlkQYg5pEIUl7E3n1WcMASUL8");
+  background-image: url("./images/bug.png");
+}
+.background-darkness {
+  background-color: orange;
+  background-image: url("./images/darkness.png");
+}
+.background-dragon {
+  background-color: orange;
+  background-image: url("./images/dragon.png");
+}
+.background-dream {
+  background-color: orange;
+  background-image: url("./images/dream.png");
+}
+.background-electric {
+  background-color: orange;
+  background-image: url("./images/electric.png");
+}
+.background-fairy {
+  background-color: orange;
+  background-image: url("./images/fairy.png");
+}
+.background-fighting {
+  background-color: orange;
+  background-image: url("./images/fighting.png");
+}
+.background-fire {
+  background-color: orange;
+  background-image: url("./images/fire.png");
+}
+.background-flying {
+  background-color: orange;
+  background-image: url("./images/flying.png");
+}
+.background-ghost {
+  background-color: orange;
+  background-image: url("./images/ghost.png");
+}
+.background-grass {
+  background-color: orange;
+  background-image: url("./images/grass.png");
+}
+.background-ground {
+  background-color: orange;
+  background-image: url("./images/ground.png");
+}
+.background-ice {
+  background-color: orange;
+  background-image: url("./images/ice.png");
+}
+.background-normal {
+  background-color: orange;
+  background-image: url("./images/normal.png");
+}
+.background-poison {
+  background-color: orange;
+  background-image: url("./images/poison.png");
+}
+.background-psychic {
+  background-color: orange;
+  background-image: url("./images/psychic.png");
+}
+.background-rock {
+  background-color: orange;
+  background-image: url("./images/rock.png");
+}
+.background-steel {
+  background-color: orange;
+  background-image: url("./images/steel.png");
+}
+.background-water {
+  background-color: orange;
+  background-image: url("./images/water.png");
 }
 
 .poke-name {
@@ -120,6 +195,13 @@
   font-size: 14px;
   background-color: hsl(45, 100%, 50%, 0.3);
 }
+.stat-list {
+  padding: 0;
+  list-style-type: none;
+  line-height: 16px;
+  align-self: center;
+  font-weight: bold;
+}
 
 .card-set {
   display: flex;
@@ -127,8 +209,8 @@
 
 .card-container-back {
   margin: auto;
-  width: 150px;
-  height: 225px;
+  width: 400px;
+  height: 600px;
   border: black solid 2px;
   background-color: #032f7e;
   border-radius: 14px;
@@ -139,20 +221,12 @@
 
 .card-back {
   margin: auto;
-  width: 94%;
-  height: 94%;
+  width: 370px;
+  height: 570px;
   border: solid 1px black;
   background-color: orange;
   background-image: url("https://i.imgur.com/YfRarvn.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-}
-
-.stat-list {
-  padding: 0;
-  list-style-type: none;
-  line-height: 16px;
-  align-self: center;
-  font-weight: bold;
 }
