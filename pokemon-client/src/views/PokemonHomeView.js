@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPokemonAction } from "../actions/pokemonActions";
+import { Container, Row } from "react-bootstrap";
 import Paginate from "../components/Paginate";
 import Card from "../components/Card";
 
@@ -26,18 +27,22 @@ const PokemonHomeView = () => {
   // const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div>
-      {error && <h1>{error}</h1>}
-      {loading ? (
-        <h1>loading</h1>
-      ) : (
-        success && pokemon.map((item) => <Card item={item} />)
-      )}
-      {/* <Paginate
+    <div className="home-view">
+      <Container fluid>
+        <Row className="justify-content-around">
+          {error && <h1>{error}</h1>}
+          {loading ? (
+            <h1>loading</h1>
+          ) : (
+            success && pokemon.map((item) => <Card item={item} />)
+          )}
+          {/* <Paginate
         postsPerPage={postsPerPage}
         totalPosts={success && pokemon.length}
         paginate={paginate}
       /> */}
+        </Row>
+      </Container>
     </div>
   );
 };
