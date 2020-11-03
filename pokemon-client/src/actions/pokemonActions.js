@@ -64,7 +64,15 @@ export const getSinglePokemonAction = (id) => async (dispatch) => {
 
     const info = await axios.get(stats.data.species.url);
 
-    const fullData = { stats: stats.data, info: info.data };
+    const locations = await axios.get(
+      `https://cors-anywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon/${id}/encounters`
+    );
+
+    const fullData = {
+      stats: stats.data,
+      info: info.data,
+      locations: locations.data,
+    };
     //wait for all async promises
     dispatch({
       type: FETCH_SINGLE_POKEMON_SUCCESS,
