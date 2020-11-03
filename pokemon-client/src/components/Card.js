@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import ReactCardFlip from "react-card-flip";
+import { Button } from "react-bootstrap";
 
 import "../styles/largeCardStyle.css";
 
@@ -10,14 +12,15 @@ const Card = ({ item, history }) => {
   //Retro is the pixel/original artwork for the card image
   const [isRetro, setIsRetro] = useState(true);
 
-  const handleDoubleClick = (id) => {
-    history.push(`/pokeprofile/${id}`);
-  };
-
   return (
     <div className="my-5">
-      <div onDoubleClick={() => handleDoubleClick(item.pokemon.id)}>
-        <h2 style={{ justifySelf: "center" }}>{item.pokemon.name}</h2>
+      <div>
+        <LinkContainer to={`/pokeprofile/${item.pokemon.id}`}>
+          <Button variant="dark" className="m-3" size="lg">
+            {item.pokemon.name.charAt(0).toUpperCase() +
+              item.pokemon.name.slice(1)}
+          </Button>
+        </LinkContainer>
       </div>
 
       <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">

@@ -1,11 +1,6 @@
 import React from "react";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //browser router
 
@@ -16,13 +11,13 @@ import Navbar from "./components/NavBar";
 const App = () => {
   return (
     //pokemon profile component
-    <BrowserRouter>
+    <Router>
       <Navbar />
       <Switch>
         <Route path="/" exact component={PokemonHomeView} />
         <Route path="/pokeprofile/:id" component={PokeProfileView} />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 };
 

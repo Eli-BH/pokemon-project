@@ -27,12 +27,12 @@ export const getAllPokemonReducer = (state = { pokemon: [] }, action) => {
         error: action.payload,
       };
     default:
-      return {};
+      return state;
   }
 };
 
 //reducer for getting a single pokemon
-export const getSinglePokemonReducer = (state = {}, action) => {
+export const getSinglePokemonReducer = (state = { pokemon: {} }, action) => {
   switch (action.type) {
     case FETCH_SINGLE_POKEMON_REQUEST:
       return {
@@ -47,7 +47,10 @@ export const getSinglePokemonReducer = (state = {}, action) => {
     case FETCH_SINGLE_POKEMON_FAIL:
       return {
         loading: false,
-        error: action.payload,
+        error: [action.payload],
       };
+
+    default:
+      return state;
   }
 };

@@ -2,11 +2,15 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import { getAllPokemonReducer } from "./reducers/pokemonReducers";
+import {
+  getAllPokemonReducer,
+  getSinglePokemonReducer,
+} from "./reducers/pokemonReducers";
 
 //reducers
 const reducer = combineReducers({
   getAllPokemon: getAllPokemonReducer,
+  getSinglePokemon: getSinglePokemonReducer,
 });
 
 //initial state

@@ -1,0 +1,17 @@
+.profile-img-container {
+  margin: auto;
+  margin-top: 5%;
+  text-align: center;
+}
+.profile-img {
+  border: solid black 3px;
+  height: 250px;
+  width: 250px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: green;
+  background-image: url(./images/FreeVector-Poke-Ball.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}

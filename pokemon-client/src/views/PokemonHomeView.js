@@ -37,7 +37,12 @@ const PokemonHomeView = ({ history }) => {
           {loading ? (
             <h1>loading</h1>
           ) : (
-            success && pokemon.map((item) => <Card item={item} />)
+            success &&
+            pokemon.map((item) => (
+              <div key={item.pokemon.name}>
+                <Card item={item} />
+              </div>
+            ))
           )}
           {/* <Paginate
         postsPerPage={postsPerPage}
