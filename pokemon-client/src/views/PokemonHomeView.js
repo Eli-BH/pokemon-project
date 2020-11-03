@@ -5,7 +5,7 @@ import { Container, Row } from "react-bootstrap";
 import Paginate from "../components/Paginate";
 import Card from "../components/Card";
 
-const PokemonHomeView = () => {
+const PokemonHomeView = ({ history }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(50);
 
@@ -30,7 +30,10 @@ const PokemonHomeView = () => {
     <div className="home-view">
       <Container fluid>
         <Row className="justify-content-around">
-          {error && <h1>{error}</h1>}
+          {
+            //should replace with a styled error alert
+            error && <h1>{error}</h1>
+          }
           {loading ? (
             <h1>loading</h1>
           ) : (

@@ -1,17 +1,25 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import ReactCardFlip from "react-card-flip";
 
 import "../styles/largeCardStyle.css";
 
-const Card = ({ item }) => {
+const Card = ({ item, history }) => {
+  //Flipped is to control the state of the card flip
   const [isFlipped, setIsFlipped] = useState(true);
+  //Retro is the pixel/original artwork for the card image
   const [isRetro, setIsRetro] = useState(true);
+
+  const handleDoubleClick = (id) => {
+    history.push(`/pokeprofile/${id}`);
+  };
 
   return (
     <div className="my-5">
-      <div>
+      <div onDoubleClick={() => handleDoubleClick(item.pokemon.id)}>
         <h2 style={{ justifySelf: "center" }}>{item.pokemon.name}</h2>
       </div>
+
       <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
         <div className="card-container">
           <div
@@ -39,10 +47,20 @@ const Card = ({ item }) => {
                 />
                 <div className="poke-measure">
                   <p className="poke-height">
-                    Height: {Math.floor(item.pokemon.height * 3.937)} in
+                    Height:{" "}
+                    {
+                      //conversion from decimeters to inches
+                      Math.floor(item.pokemon.height * 3.937)
+                    }{" "}
+                    in
                   </p>
                   <p className="poke-weight">
-                    Weight: {Math.floor(item.pokemon.weight * 0.220462)} lbs
+                    Weight:{" "}
+                    {
+                      //conversion from hectograms to pounds
+                      Math.floor(item.pokemon.weight * 0.220462)
+                    }{" "}
+                    lbs
                   </p>
                 </div>
               </div>
@@ -59,9 +77,12 @@ const Card = ({ item }) => {
                         <strong>
                           {item.pokemon.types[0].type.name}{" "}
                           <span>
-                            {item.pokemon.types.length > 1
-                              ? `/ ${item.pokemon.types[1].type.name}`
-                              : null}
+                            {
+                              //test to see if pokemon is hybrid type
+                              item.pokemon.types.length > 1
+                                ? `/ ${item.pokemon.types[1].type.name}`
+                                : null
+                            }
                           </span>
                         </strong>
                       </p>
@@ -129,7 +150,7 @@ const Card = ({ item }) => {
                     </li>
                     <li>
                       <p>
-                        {item.species.flavor_text_entries[0].flavor_text.replace(
+                        {item.species.flavor_text_entries[1].flavor_text.replace(
                           "",
                           " "
                         )}
@@ -163,4 +184,4 @@ const Card = ({ item }) => {
   );
 };
 
-export default Card;
+export default withRouter(Card);
