@@ -240,3 +240,105 @@
   background-size: cover;
   background-position: center center;
 }
+
+@media screen and (max-width: 900px) {
+  .card-container {
+    margin: auto;
+    width: 200px;
+    height: 300px;
+    border: black solid 2px;
+    background-color: #ffbf00;
+    border-radius: 14px;
+    position: relative;
+    display: flex;
+    box-shadow: 10px 12px 20px 1px rgb(97, 95, 71);
+  }
+
+  .card-face {
+    margin: auto;
+    /* width: 370px;
+      height: 570px; */
+    width: 94%;
+    height: 95%;
+    border: solid 1px black;
+  }
+
+  .card-container-back {
+    margin: auto;
+    width: 200px;
+    height: 300px;
+    border: black solid 2px;
+    background-color: #032f7e;
+    border-radius: 14px;
+    position: relative;
+    display: flex;
+    box-shadow: 8px 12px 12px 1px #222;
+  }
+
+  .card-back {
+    margin: auto;
+    width: 170px;
+    height: 270px;
+    border: solid 1px black;
+    background-color: orange;
+    background-image: url("https://i.imgur.com/YfRarvn.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .poke-stats {
+    height: 100%;
+    width: 95%;
+    margin: auto;
+    font-family: sans-serif;
+    font-size: 8px;
+    background-color: hsl(45, 100%, 50%, 0.3);
+  }
+  .stat-list {
+    padding: 0;
+    list-style-type: none;
+    line-height: 7px;
+
+    align-self: center;
+    font-weight: bold;
+  }
+  .stat-list p {
+    margin-bottom: 9px;
+  }
+
+  .type-left ul,
+  .type-right ul {
+    padding-top: 20px;
+    line-height: 1px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 8px;
+    margin-bottom: auto;
+    font-size: 8px;
+  }
+
+  .poke-measure {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    padding: 0;
+    width: 100%;
+    background-color: gold;
+    margin: auto;
+    height: 20px;
+    font-size: 9px;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 4px;
+    font-family: sans-serif;
+  }
+  .poke-measure p {
+    margin-top: 1pc;
+  }
+
+  .poke-name {
+    font-size: 15px;
+  }
+}
