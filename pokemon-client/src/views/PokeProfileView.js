@@ -19,6 +19,7 @@ import PalParkAccordion from "../components/PalParkAccordion";
 import PokedexAccordion from "../components/PokedexAccordion";
 import EvolutionChainAccordion from "../components/EvolutionChainAccordion";
 import EggGroupsAccordion from "../components/EggGroupsAccordion";
+import Loader from "../components/Loader";
 
 const PokeProfileView = ({ match }) => {
   const disptach = useDispatch();
@@ -37,7 +38,7 @@ const PokeProfileView = ({ match }) => {
         <Row className="row-1">
           {error && console.log(error)}
           {loading ? (
-            <h1>loading</h1>
+            <Loader />
           ) : (
             success && (
               <Col md="auto" className="profile-img-container my-5">
@@ -57,7 +58,7 @@ const PokeProfileView = ({ match }) => {
         <h3 className="row-2 mt-4 ">Pokémon Info</h3>
         {error && console.log(error)}
         {loading ? (
-          <h1>loading</h1>
+          <Loader />
         ) : (
           success && (
             <Row>
@@ -74,11 +75,7 @@ const PokeProfileView = ({ match }) => {
         <Row>
           <Col>
             {error && console.log(error)}
-            {loading ? (
-              <h1>loading</h1>
-            ) : (
-              success && <BaseStats pokemon={pokemon} />
-            )}
+            {loading ? <Loader /> : success && <BaseStats pokemon={pokemon} />}
           </Col>
         </Row>
 
@@ -86,7 +83,7 @@ const PokeProfileView = ({ match }) => {
           <Col sm={12} md={6}>
             {error && console.log(error)}
             {loading ? (
-              <h1>loading</h1>
+              <Loader />
             ) : (
               success && (
                 <div>
@@ -117,7 +114,7 @@ const PokeProfileView = ({ match }) => {
           <Col sm={12} md={6}>
             {error && console.log(error)}
             {loading ? (
-              <h1>loading</h1>
+              <Loader />
             ) : (
               success && (
                 <div>

@@ -8,13 +8,16 @@ const BaseStats = ({ pokemon }) => {
       <div className="mt-3 mb-5">
         {pokemon.stats.stats.map((item) => (
           <p>
-            <strong>{item.stat.name.toUpperCase()}: </strong>{" "}
+            <strong style={{ fontSize: "1.5rem" }}>
+              {item.stat.name.toUpperCase()}:{" "}
+            </strong>{" "}
             <span>
               <ProgressBar
-                variant="info"
+                variant="danger"
                 now={item.base_stat}
                 label={item.base_stat}
                 style={{ fontSize: 16, height: 20 }}
+                className="base-stats"
               />
             </span>
           </p>

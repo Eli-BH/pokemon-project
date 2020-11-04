@@ -4,6 +4,8 @@ import { getAllPokemonAction } from "../actions/pokemonActions";
 import { Container, Row, Pagination } from "react-bootstrap";
 
 import Card from "../components/Card";
+import Loader from "../components/Loader";
+import "../styles/homeStyle.css";
 
 const PokemonHomeView = ({ history }) => {
   const [offset, setOffset] = useState(0);
@@ -35,7 +37,7 @@ const PokemonHomeView = ({ history }) => {
             error && <h1>{error}</h1>
           }
           {loading ? (
-            <h1>loading</h1>
+            <Loader />
           ) : (
             success &&
             pokemon.map((item) => (
