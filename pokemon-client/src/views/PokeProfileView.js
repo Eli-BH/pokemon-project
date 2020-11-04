@@ -18,6 +18,7 @@ import VarietiesAccordion from "../components/VarietiesAccordion";
 import PalParkAccordion from "../components/PalParkAccordion";
 import PokedexAccordion from "../components/PokedexAccordion";
 import EvolutionChainAccordion from "../components/EvolutionChainAccordion";
+import EggGroupsAccordion from "../components/EggGroupsAccordion";
 
 const PokeProfileView = ({ match }) => {
   const disptach = useDispatch();
@@ -27,7 +28,7 @@ const PokeProfileView = ({ match }) => {
 
   useEffect(() => {
     disptach(getSinglePokemonAction(match.params.id));
-  }, [disptach]);
+  }, [disptach, match.params.id]);
 
   return (
     <div className="my-5">
@@ -130,7 +131,7 @@ const PokeProfileView = ({ match }) => {
                   <PokedexAccordion pokemon={pokemon} />
 
                   {/* Egg Groups  */}
-                  <PokedexAccordion pokemon={pokemon} />
+                  <EggGroupsAccordion pokemon={pokemon} />
 
                   {/* Evolution Chain */}
                   <EvolutionChainAccordion

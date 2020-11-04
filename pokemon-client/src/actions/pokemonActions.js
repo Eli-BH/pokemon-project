@@ -9,7 +9,7 @@ import {
   FETCH_SINGLE_POKEMON_FAIL,
 } from "../constants/pokemonConstants";
 
-export const getAllPokemonAction = () => async (dispatch) => {
+export const getAllPokemonAction = (offset = 0) => async (dispatch) => {
   try {
     //call the reducer to set loader to wait for response
     dispatch({
@@ -18,7 +18,7 @@ export const getAllPokemonAction = () => async (dispatch) => {
 
     //call for the data
     const { data } = await axios.get(
-      "https://cors-anywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50"
+      `https://cors-anywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=50`
     );
 
     //the returned info from the data have two keys,

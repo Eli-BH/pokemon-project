@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPokemonAction } from "../actions/pokemonActions";
-import { Container, Row } from "react-bootstrap";
-import Paginate from "../components/Paginate";
+import { Container, Row, Pagination } from "react-bootstrap";
+
 import Card from "../components/Card";
 
 const PokemonHomeView = ({ history }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(50);
+  const [offset, setOffset] = useState(0);
 
   const dispatch = useDispatch();
   const getAllPokemon = useSelector((state) => state.getAllPokemon);
   const { error, loading, pokemon, success } = getAllPokemon;
 
   useEffect(() => {
-    dispatch(getAllPokemonAction());
-  }, [dispatch]);
+    dispatch(getAllPokemonAction(offset));
+  }, [dispatch, offset]);
 
   // //Get current posts
   // const indexOfLastPost = currentPage * postsPerPage;
@@ -28,8 +27,9 @@ const PokemonHomeView = ({ history }) => {
 
   return (
     <div className="home-view">
-      <Container fluid>
+      <Container className="py-5" fluid>
         <Row className="justify-content-around">
+          {" "}
           {
             //should replace with a styled error alert
             error && <h1>{error}</h1>
@@ -44,12 +44,17 @@ const PokemonHomeView = ({ history }) => {
               </div>
             ))
           )}
-          {/* <Paginate
-        postsPerPage={postsPerPage}
-        totalPosts={success && pokemon.length}
-        paginate={paginate}
-      /> */}
         </Row>
+        <Pagination className="justify-content-center">
+          <Pagination.First onClick={() => setOffset(0)} />{" "}
+          {offset > 0 && (
+            <Pagination.Prev onClick={() => setOffset(offset - 50)} />
+          )}
+          {offset < 1000 && (
+            <Pagination.Next onClick={() => setOffset(offset + 50)} />
+          )}
+          <Pagination.Last onClick={() => setOffset(1000)} />{" "}
+        </Pagination>
       </Container>
     </div>
   );

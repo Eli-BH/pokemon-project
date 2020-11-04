@@ -23,9 +23,9 @@
   background-color: orange;
   background-image: url("./images/bug.png");
 }
-.background-darkness {
-  background-color: orange;
-  background-image: url("./images/darkness.png");
+.background-dark {
+  background-color: rgb(117, 115, 111);
+  /* background-image: url("./images/darkness.png"); */
 }
 .background-dragon {
   background-color: orange;

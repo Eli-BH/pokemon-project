@@ -148,7 +148,10 @@ const Card = ({ item, history }) => {
                   <ul className="stat-list">
                     <li>
                       <p>
-                        <b>Habitat: </b> {item.species.habitat.name}
+                        <b>Habitat: </b>{" "}
+                        {item.species.habitat
+                          ? item.species.habitat.name
+                          : "Not known yet"}
                       </p>
                     </li>
                     <li>
