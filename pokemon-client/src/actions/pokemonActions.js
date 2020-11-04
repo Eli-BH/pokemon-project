@@ -68,10 +68,13 @@ export const getSinglePokemonAction = (id) => async (dispatch) => {
       `https://cors-anywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon/${id}/encounters`
     );
 
+    const evolution = await axios.get(info.data.evolution_chain.url);
+
     const fullData = {
       stats: stats.data,
       info: info.data,
       locations: locations.data,
+      evolution: evolution.data,
     };
     //wait for all async promises
     dispatch({

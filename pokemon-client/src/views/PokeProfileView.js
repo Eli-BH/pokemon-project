@@ -9,8 +9,9 @@ import {
   Accordion,
   Card,
   Button,
-  AccordionToggle,
+  ProgressBar,
 } from "react-bootstrap";
+import axios from "axios";
 
 import "../styles/profileStyles.css";
 
@@ -25,10 +26,10 @@ const PokeProfileView = ({ match }) => {
   }, [disptach]);
 
   return (
-    <div>
+    <div className="my-5">
       {/* <h1>{`Hello from the Pokefile view ${match.params.id}`}</h1> */}
       <Container className="mt-5">
-        <Row>
+        <Row className="row-1">
           {error && console.log(error)}
           {loading ? (
             <h1>loading</h1>
@@ -48,15 +49,26 @@ const PokeProfileView = ({ match }) => {
             )
           )}
         </Row>
-
-        <Row className="row-2 ">
-          <Col>
-            {error && console.log(error)}
-            {loading ? (
-              <h1>loading</h1>
-            ) : (
-              success && (
+        <h3 className="row-2 mt-4 ">Pokémon Info</h3>
+        {error && console.log(error)}
+        {loading ? (
+          <h1>loading</h1>
+        ) : (
+          success && (
+            <Row>
+              <Col md={6} sm={12}>
                 <div>
+                  <p className="my-3">
+                    <strong>Type: </strong>
+                    {pokemon.stats ? (
+                      pokemon.stats.types[0].type.name
+                    ) : (
+                      <h5>Loading</h5>
+                    )}
+                    {pokemon.stats.types[1]
+                      ? ` - ${pokemon.stats.types[1].type.name}`
+                      : null}
+                  </p>
                   <p className="my-3">
                     <strong>Id: </strong>
                     {pokemon.stats.id}
@@ -78,12 +90,86 @@ const PokeProfileView = ({ match }) => {
                     {pokemon.stats.base_experience}
                   </p>
                   <p className="my-3">
-                    <strong>Starter Pokemon: </strong>
+                    <strong>Starter Pokémon: </strong>
                     {pokemon.stats.is_default ? "True" : "False"}
                   </p>
+                </div>
+              </Col>
+              <Col md={6} sm={12}>
+                <div>
+                  <p className="my-3">
+                    <strong>Hatch Counter: </strong>
+                    {pokemon.info.hatch_counter}
+                  </p>
+                  <p className="my-3">
+                    <strong>Baby: </strong>
+                    {pokemon.stats.is_baby ? "True" : "False"}
+                  </p>
+                  <p className="my-3">
+                    <strong>Legendary: </strong>
+                    {pokemon.stats.is_legendary ? "True" : "False"}
+                  </p>
 
-                  <h3 className="my-5"></h3>
+                  <p className="my-3">
+                    <strong>Mythical: </strong>
+                    {pokemon.stats.is_mythical ? "True" : "False"}
+                  </p>
+                  <p className="my-3">
+                    <strong>Base Happiness:</strong>
+                    {pokemon.info.base_happiness}
+                  </p>
+                  <p className="my-3">
+                    <strong>Capture Rate:</strong>
+                    {pokemon.info.capture_rate}
+                  </p>
+                  <p className="my-3">
+                    <strong>Has gender differences:</strong>
+                    {pokemon.info.has_gender_differences ? " True" : " False"}
+                  </p>
+                </div>
+              </Col>
+            </Row>
+          )
+        )}
 
+        <Row>
+          <Col>
+            {error && console.log(error)}
+            {loading ? (
+              <h1>loading</h1>
+            ) : (
+              success && (
+                <div>
+                  <h3 className="mt-5">Pokémon base stats: </h3>
+                  <div className="mt-3 mb-5">
+                    {pokemon.stats.stats.map((item) => (
+                      <p>
+                        <strong>{item.stat.name.toUpperCase()}: </strong>{" "}
+                        <span>
+                          <ProgressBar
+                            variant="info"
+                            now={item.base_stat}
+                            label={item.base_stat}
+                            style={{ fontSize: 16, height: 20 }}
+                          />
+                        </span>
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )
+            )}
+          </Col>
+        </Row>
+
+        <Row className="row-2 ">
+          <Col sm={12} md={6}>
+            {error && console.log(error)}
+            {loading ? (
+              <h1>loading</h1>
+            ) : (
+              success && (
+                <div>
                   <Accordion>
                     <Card>
                       <Accordion.Toggle as={Button} eventKey="1">
@@ -171,29 +257,30 @@ const PokeProfileView = ({ match }) => {
                       ))}
                     </Card>
                   </Accordion>
-
-                  <Accordion>
-                    <Card>
-                      <Accordion.Toggle as={Button} eventKey="1">
-                        Location encounters
-                      </Accordion.Toggle>
-                      {pokemon.locations.map((location) => (
-                        <Accordion.Collapse eventKey="1">
-                          <Card.Body>
-                            <p>
-                              <strong>Location: </strong>
-                              {location.location_area.name
-                                .charAt(0)
-                                .toUpperCase() +
-                                location.location_area.name
-                                  .slice(1)
-                                  .replaceAll("-", " ")}
-                            </p>
-                          </Card.Body>
-                        </Accordion.Collapse>
-                      ))}
-                    </Card>
-                  </Accordion>
+                  {pokemon.locations.length > 0 && (
+                    <Accordion>
+                      <Card>
+                        <Accordion.Toggle as={Button} eventKey="1">
+                          Location encounters
+                        </Accordion.Toggle>
+                        {pokemon.locations.map((location) => (
+                          <Accordion.Collapse eventKey="1">
+                            <Card.Body>
+                              <p>
+                                <strong>Location: </strong>
+                                {location.location_area.name
+                                  .charAt(0)
+                                  .toUpperCase() +
+                                  location.location_area.name
+                                    .slice(1)
+                                    .replaceAll("-", " ")}
+                              </p>
+                            </Card.Body>
+                          </Accordion.Collapse>
+                        ))}
+                      </Card>
+                    </Accordion>
+                  )}
 
                   <Accordion>
                     <Card>
@@ -262,6 +349,7 @@ const PokeProfileView = ({ match }) => {
                           </Accordion.Collapse>
                           <Accordion.Collapse eventKey="1">
                             <Card.Body>
+                              <h1>Generation 1</h1>
                               <h5>Red | Blue</h5>
                               {pokemon.stats.sprites.versions["generation-i"][
                                 "red-blue"
@@ -325,6 +413,7 @@ const PokeProfileView = ({ match }) => {
 
                           <Accordion.Collapse eventKey="1">
                             <Card.Body>
+                              <h1>Generation 2</h1>
                               <h5>Crystal</h5>
                               {pokemon.stats.sprites.versions["generation-ii"][
                                 "crystal"
@@ -418,6 +507,7 @@ const PokeProfileView = ({ match }) => {
 
                           <Accordion.Collapse eventKey="1">
                             <Card.Body>
+                              <h1>Generation 3</h1>
                               <h5>Emerald</h5>
                               {pokemon.stats.sprites.versions["generation-iii"][
                                 "emerald"
@@ -511,6 +601,7 @@ const PokeProfileView = ({ match }) => {
 
                           <Accordion.Collapse eventKey="1">
                             <Card.Body>
+                              <h1>Generation 4</h1>
                               <h5>Diamond | Pearl</h5>
                               {pokemon.stats.sprites.versions["generation-iv"][
                                 "diamond-pearl"
@@ -686,6 +777,7 @@ const PokeProfileView = ({ match }) => {
                           </Accordion.Collapse>
                           <Accordion.Collapse eventKey="1">
                             <Card.Body>
+                              <h1>Generation 5</h1>
                               <h5>Black | White</h5>
                               {pokemon.stats.sprites.versions["generation-v"][
                                 "black-white"
@@ -805,6 +897,7 @@ const PokeProfileView = ({ match }) => {
 
                           <Accordion.Collapse eventKey="1">
                             <Card.Body>
+                              <h1>Generation 6</h1>
                               <h5>Omega Ruby | Alpha Sapphire</h5>
                               {pokemon.stats.sprites.versions["generation-vi"][
                                 "omegaruby-alphasapphire"
@@ -925,6 +1018,7 @@ const PokeProfileView = ({ match }) => {
                           </Accordion.Collapse>
                           <Accordion.Collapse eventKey="1">
                             <Card.Body>
+                              <h1>Generation 7</h1>
                               <h5>Ultra Sun | Ultra Moon</h5>
                               {pokemon.stats.sprites.versions["generation-vii"][
                                 "ultra-sun-ultra-moon"
@@ -992,9 +1086,109 @@ const PokeProfileView = ({ match }) => {
               )
             )}
           </Col>
+          <Col sm={12} md={6}>
+            {error && console.log(error)}
+            {loading ? (
+              <h1>loading</h1>
+            ) : (
+              success && (
+                <div>
+                  <Accordion>
+                    <Card>
+                      <Accordion.Toggle as={Button} eventKey="1">
+                        Varieties
+                      </Accordion.Toggle>{" "}
+                      {pokemon.info.varieties.map((item) => (
+                        <Accordion.Collapse eventKey="1">
+                          <Card.Body>
+                            <h6>{item.pokemon.name.replaceAll("-", " ")}</h6>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      ))}
+                    </Card>
+                  </Accordion>
+
+                  <Accordion>
+                    <Card>
+                      <Accordion.Toggle as={Button} eventKey="1">
+                        Pal Park Encounters
+                      </Accordion.Toggle>{" "}
+                      {pokemon.info.pal_park_encounters.map((item) => (
+                        <Accordion.Collapse eventKey="1">
+                          <Card.Body>
+                            <h6>{item.area.name}</h6>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      ))}
+                    </Card>
+                  </Accordion>
+                  <Accordion>
+                    <Card>
+                      <Accordion.Toggle as={Button} eventKey="1">
+                        Pokedex Numbers
+                      </Accordion.Toggle>{" "}
+                      {pokemon.info.pokedex_numbers.map((item) => (
+                        <Accordion.Collapse eventKey="1">
+                          <Card.Body>
+                            <h6>
+                              #{item.entry_number} -{" "}
+                              {item.pokedex.name.charAt(0).toUpperCase() +
+                                item.pokedex.name.slice(1).replaceAll("-", " ")}
+                            </h6>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      ))}
+                    </Card>
+                  </Accordion>
+                  <Accordion>
+                    <Card>
+                      <Accordion.Toggle as={Button} eventKey="1">
+                        Egg Groups
+                      </Accordion.Toggle>{" "}
+                      {pokemon.info.egg_groups.map((item) => (
+                        <Accordion.Collapse eventKey="1">
+                          <Card.Body>
+                            <h6>{item.name}</h6>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      ))}
+                    </Card>
+                  </Accordion>
+
+                  <Accordion>
+                    <Card>
+                      <Accordion.Toggle as={Button} eventKey="1">
+                        Evolution Chain
+                      </Accordion.Toggle>{" "}
+                      <Accordion.Collapse eventKey="1">
+                        <Card.Body>
+                          {success && pokemon.evolution.chain.species.name}
+                        </Card.Body>
+                      </Accordion.Collapse>
+                      <Accordion.Collapse eventKey="1">
+                        <Card.Body>
+                          {success &&
+                            pokemon.evolution.chain.evolves_to[0].species.name}
+                        </Card.Body>
+                      </Accordion.Collapse>
+                      <Accordion.Collapse eventKey="1">
+                        <Card.Body>
+                          {success &&
+                            pokemon.evolution.chain.evolves_to[0].evolves_to[0]
+                              .species.name}
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                  </Accordion>
+                </div>
+              )
+            )}
+          </Col>
         </Row>
 
-        <Row></Row>
+        <Row>
+          <Col></Col>
+        </Row>
       </Container>
     </div>
   );
