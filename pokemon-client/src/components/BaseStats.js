@@ -1,0 +1,27 @@
+import React from "react";
+import { ProgressBar } from "react-bootstrap";
+
+const BaseStats = ({ pokemon }) => {
+  return (
+    <div>
+      <h3 className="mt-5">Pokémon base stats: </h3>
+      <div className="mt-3 mb-5">
+        {pokemon.stats.stats.map((item) => (
+          <p>
+            <strong>{item.stat.name.toUpperCase()}: </strong>{" "}
+            <span>
+              <ProgressBar
+                variant="info"
+                now={item.base_stat}
+                label={item.base_stat}
+                style={{ fontSize: 16, height: 20 }}
+              />
+            </span>
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default BaseStats;
