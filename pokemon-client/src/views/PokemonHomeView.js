@@ -47,16 +47,19 @@ const PokemonHomeView = ({ history }) => {
             ))
           )}
         </Row>
-        <Pagination className="justify-content-center">
-          <Pagination.First onClick={() => setOffset(0)} />{" "}
-          {offset > 0 && (
-            <Pagination.Prev onClick={() => setOffset(offset - 50)} />
-          )}
-          {offset < 1000 && (
-            <Pagination.Next onClick={() => setOffset(offset + 50)} />
-          )}
-          <Pagination.Last onClick={() => setOffset(1000)} />{" "}
-        </Pagination>
+
+        {!loading && (
+          <Pagination className="justify-content-center paginate ">
+            <Pagination.First onClick={() => setOffset(0)} />{" "}
+            {offset > 0 && (
+              <Pagination.Prev onClick={() => setOffset(offset - 50)} />
+            )}
+            {offset < 1000 && (
+              <Pagination.Next onClick={() => setOffset(offset + 50)} />
+            )}
+            <Pagination.Last onClick={() => setOffset(1000)} />{" "}
+          </Pagination>
+        )}
       </Container>
     </div>
   );

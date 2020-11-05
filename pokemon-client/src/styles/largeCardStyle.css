@@ -231,11 +231,6 @@
   background-position: center center;
 }
 
-.home-view {
-  height: 100%;
-  width: 100%;
-}
-
 @media screen and (max-width: 900px) {
   .card-container {
     margin: auto;

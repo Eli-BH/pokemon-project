@@ -1,9 +1,10 @@
 import React from "react";
 import { ProgressBar } from "react-bootstrap";
+import "../styles/profileStyles.css";
 
 const BaseStats = ({ pokemon }) => {
   return (
-    <div>
+    <div className="stat-div">
       <h3 className="mt-5">Pokémon base stats: </h3>
       <div className="mt-3 mb-5">
         {pokemon.stats.stats.map((item) => (

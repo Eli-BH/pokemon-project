@@ -11,8 +11,6 @@
   -moz-animation: spin 4s linear infinite;
   animation: spin 4s linear infinite;
   background-color: white;
-  margin-top: 50%;
-  margin-bottom: 50%;
 }
 .pokeball-top {
   top: 0px;

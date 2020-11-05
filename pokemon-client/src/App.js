@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PokemonHomeView from "./views/PokemonHomeView";
 import PokeProfileView from "./views/PokeProfileView";
 import Navbar from "./components/NavBar";
+import LoginView from "./views/LoginView";
+import RegisterView from "./views/RegisterView";
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={PokemonHomeView} />
         <Route path="/pokeprofile/:id" component={PokeProfileView} />
+        <Route path="/login" component={LoginView} />
+        <Route path="/register" component={RegisterView} />
       </Switch>
     </Router>
   );

@@ -61,7 +61,7 @@ const PokeProfileView = ({ match }) => {
           <Loader />
         ) : (
           success && (
-            <Row>
+            <Row className="my-5">
               <Col md={6} sm={12}>
                 <Stats pokemon={pokemon} />
               </Col>
