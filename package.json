@@ -1,0 +1,32 @@
+{
+  "name": "pokemon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^5.10.12",
+    "react-icons": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon pokemon-backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eli-BH/pokemon-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eli-BH/pokemon-project/issues"
+  },
+  "homepage": "https://github.com/Eli-BH/pokemon-project#readme"
+}
