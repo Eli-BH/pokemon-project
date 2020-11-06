@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Pokemon = require("../models/pokemonModel");
 
 const userSchema = mongoose.Schema(
   {
@@ -21,6 +22,7 @@ const userSchema = mongoose.Schema(
       required: true,
       minlength: 8,
     },
+    pokemonDeck: [Pokemon],
   },
   { timestamps: true }
 );
