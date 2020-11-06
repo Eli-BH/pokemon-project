@@ -9,6 +9,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.12",
     "react-icons": "^3.11.0"
   },
@@ -19,7 +20,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon pokemon-backend/server",
     "client": "npm start --prefix pokemon-client",
-    "dev": "concurrently \"npmn run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
+const generateToken = require("../utils/generateToken");
 
 //@desc Auth user & get token
 //@route POST /api/users/login
@@ -12,11 +13,13 @@ const authUser = asyncHandler(async (req, res) => {
   // check if the users email is alread in the db
   const user = await User.findOne({ email });
 
-  if (user) {
+  if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
       username: user.username,
       email: user.email,
+      pokemonDeck: user.pokemonDeck,
+      token: generateToken(user._id),
     });
   } else {
     //throw error if user is not found
@@ -51,6 +54,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       username: user.username,
       email: user.email,
+      pokemonDeck: user.pokemonDeck,
     });
   } else {
     res.status(400);
@@ -58,7 +62,27 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc Update user profile
+// @route PUT /api/users/profile
+// @access Private
+const getUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    res.json({
+      _id: user._id,
+      username: user.name,
+      email: user.email,
+      pokemonDeck: user.pokemonDeck,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
 module.exports = {
   registerUser: registerUser,
   authUser: authUser,
+  getUserProfile: getUserProfile,
 };
