@@ -13,13 +13,17 @@ const NavBar = () => {
         </span>
         PokéBook
       </Navbar.Brand>
+
       <Nav className="ml-auto mr-1">
-        <Nav.Link>
-          <span>
-            <MdPerson />{" "}
-          </span>{" "}
-          Profile
-        </Nav.Link>
+        <LinkContainer to="/profile">
+          <Nav.Link>
+            <span>
+              <MdPerson />{" "}
+            </span>{" "}
+            Profile
+          </Nav.Link>
+        </LinkContainer>
+
         <LinkContainer to="/login">
           <Button variant="primary" size="sm" className="mx-4">
             Login

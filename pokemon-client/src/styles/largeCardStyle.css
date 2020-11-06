@@ -10,6 +10,7 @@
   box-shadow: 10px 12px 20px 1px rgb(97, 95, 71);
 }
 
+
 .card-face {
   margin: auto;
   /* width: 370px;
@@ -230,12 +231,17 @@
   background-size: cover;
   background-position: center center;
 }
+.logo-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media screen and (max-width: 900px) {
   .card-container {
     margin: auto;
-    width: 200px;
-    height: 300px;
+    width: 350px;
+    height: 500px;
     border: black solid 2px;
     background-color: #ffbf00;
     border-radius: 14px;
@@ -255,8 +261,8 @@
 
   .card-container-back {
     margin: auto;
-    width: 200px;
-    height: 300px;
+    width: 350px;
+    height: 500px;
     border: black solid 2px;
     background-color: #032f7e;
     border-radius: 14px;
@@ -267,8 +273,8 @@
 
   .card-back {
     margin: auto;
-    width: 170px;
-    height: 270px;
+    width: 320px;
+    height: 470px;
     border: solid 1px black;
     background-color: orange;
     background-image: url("https://i.imgur.com/YfRarvn.jpg");
@@ -282,13 +288,13 @@
     width: 95%;
     margin: auto;
     font-family: sans-serif;
-    font-size: 8px;
+    font-size: 12px;
     background-color: hsl(45, 100%, 50%, 0.3);
   }
   .stat-list {
     padding: 0;
     list-style-type: none;
-    line-height: 7px;
+    line-height: 14px;
 
     align-self: center;
     font-weight: bold;
@@ -300,13 +306,13 @@
   .type-left ul,
   .type-right ul {
     padding-top: 20px;
-    line-height: 1px;
+    line-height: 6px;
     list-style-type: none;
     padding: 0;
     margin: 0;
     margin-top: 8px;
     margin-bottom: auto;
-    font-size: 8px;
+    font-size: 14px;
   }
 
   .poke-measure {
@@ -318,7 +324,7 @@
     background-color: gold;
     margin: auto;
     height: 20px;
-    font-size: 9px;
+    font-size: 12px;
     align-items: center;
     justify-content: space-around;
     border-radius: 4px;
@@ -329,6 +335,10 @@
   }
 
   .poke-name {
-    font-size: 15px;
+    font-size: 20px;
+  }
+
+  img {
+    width: 350px;
   }
 }

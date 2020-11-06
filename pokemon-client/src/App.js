@@ -9,6 +9,7 @@ import PokeProfileView from "./views/PokeProfileView";
 import Navbar from "./components/NavBar";
 import LoginView from "./views/LoginView";
 import RegisterView from "./views/RegisterView";
+import ProfileView from "./views/ProfileView";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/pokeprofile/:id" component={PokeProfileView} />
         <Route path="/login" component={LoginView} />
         <Route path="/register" component={RegisterView} />
+        <Route path="/profile" component={ProfileView} />
       </Switch>
     </Router>
   );
