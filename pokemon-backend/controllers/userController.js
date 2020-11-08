@@ -125,13 +125,11 @@ const deletePokemon = asyncHandler(async (req, res) => {
 
   if (user) {
     user.pokemonDeck = user.pokemonDeck.filter(
-      (deck) => deck.pokemonName != req.body.pokemonName
+      (deck) => deck.id != req.body.id
     );
 
     await user.save();
-    res
-      .status(202)
-      .json({ message: `${req.body.pokemonName} deleted from deck` });
+    res.status(202).json({ message: `${req.body.id} deleted from deck` });
   } else {
     res.status(400);
     throw new Error("User not found");

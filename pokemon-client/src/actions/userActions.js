@@ -13,6 +13,9 @@ import {
   USER_ADD_POKEMON_REQUEST,
   USER_ADD_POKEMON_SUCCESS,
   USER_ADD_POKEMON_FAIL,
+  USER_DELETE_POKEMON_REQUEST,
+  USER_DELETE_POKEMON_SUCCESS,
+  USER_DELETE_POKEMON_FAIL,
 } from "../constants/userConstants";
 import axios from "axios";
 
@@ -150,6 +153,34 @@ export const addPokemon = (pokemon) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_ADD_POKEMON_FAIL,
+      payload: error,
+    });
+  }
+};
+
+export const deletePokemon = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_DELETE_POKEMON_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    axios.put(`/api/users/profile`, id, config);
+
+    dispatch({
+      type: USER_DELETE_POKEMON_SUCCESS,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_DELETE_POKEMON_FAIL,
       payload: error,
     });
   }

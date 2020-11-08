@@ -13,6 +13,9 @@ import {
   USER_ADD_POKEMON_REQUEST,
   USER_ADD_POKEMON_SUCCESS,
   USER_ADD_POKEMON_FAIL,
+  USER_DELETE_POKEMON_REQUEST,
+  USER_DELETE_POKEMON_SUCCESS,
+  USER_DELETE_POKEMON_FAIL,
 } from "../constants/userConstants";
 
 //reducer for login
@@ -62,7 +65,7 @@ export const userRegisterReducer = (state = {}, action) => {
 
 //reducer to get user details
 export const userDetailsReducer = (state = { user: {} }, action) => {
-  switch (action.payload) {
+  switch (action.type) {
     case USER_DETAILS_REQUEST:
       return { ...state, loading: true };
 
@@ -91,6 +94,19 @@ export const userAddPokemonReducer = (state = {}, action) => {
     case USER_ADD_POKEMON_FAIL:
       return { loading: false, error: action.payload };
 
+    default:
+      return state;
+  }
+};
+
+export const userDeletePokemonReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_DELETE_POKEMON_REQUEST:
+      return { loading: true };
+    case USER_DELETE_POKEMON_SUCCESS:
+      return { loading: false, success: true, deleteData: action.payload };
+    case USER_DELETE_POKEMON_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }

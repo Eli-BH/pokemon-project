@@ -30,7 +30,7 @@ const PokemonHomeView = ({ history }) => {
 
   return (
     <div className="home-view justify-content-center">
-      <Container fluid>
+      <Container fluid style={{ margin: "0px 100px 0px 100px" }}>
         <div className="mb-5 logo-div">
           <Image src={Pokebook} alt="Pokébook logo" />
         </div>
@@ -48,7 +48,7 @@ const PokemonHomeView = ({ history }) => {
             </Pagination>
           )}
 
-          <Row className="justify-content-around">
+          <Row xs className="justify-content-around">
             {" "}
             {
               //should replace with a styled error alert

@@ -32,11 +32,7 @@ const PokeProfileView = ({ match }) => {
   const { error, loading, pokemon, success } = getSinglePokemon;
 
   const userAddPokemon = useSelector((state) => state.userAddPokemon);
-  const {
-    error: addPokemonError,
-    loading: addPokemonLoading,
-    success: addPokemonSuccess,
-  } = userAddPokemon;
+  const { error: addPokemonError, success: addPokemonSuccess } = userAddPokemon;
 
   useEffect(() => {
     disptach(getSinglePokemonAction(match.params.id));
