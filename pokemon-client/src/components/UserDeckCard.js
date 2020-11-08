@@ -19,12 +19,12 @@ const UserDeckCard = ({ card }) => {
 
   return (
     <div>
-      <div className="justify-content-between">
-        <Button variant="danger" onClick={handleDelete} className="mr-5">
+      <div className="align-content-center">
+        <Button variant="danger" onClick={handleDelete} className="mx-5 mb-2">
           Delete
         </Button>
-        <LinkContainer to={`/pokeprofile/${card.id}`}>
-          <Button>{card.id}</Button>
+        <LinkContainer to={`/pokeprofile/${card.id}`} className="mx-5 mb-2">
+          <Button>{card.pokemonName}</Button>
         </LinkContainer>
       </div>
       <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">

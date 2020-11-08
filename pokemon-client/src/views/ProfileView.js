@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 import UserDeckCard from "../components/UserDeckCard";
 import { getUserDetails } from "../actions/userActions";
@@ -23,20 +23,22 @@ const ProfileView = ({ history }) => {
   }, [userInfo, history, dispatch, user]);
 
   return (
-    <div className="my-5">
-      <h1 className="my-5">Username</h1>
+    <div className="home-view justify-content-center">
+      <Container fluid>
+        <h1>Hello {userInfo.username}!</h1>
 
-      <h1 className="my-5">My Favorite Cards</h1>
-      <Row>
-        {error && <h1>{error}</h1>}
-        {user.pokemonDeck
-          ? user.pokemonDeck.map((item) => (
-              <div className="m-5">
-                <UserDeckCard card={item} />
-              </div>
-            ))
-          : loading && <h1>Loading</h1>}
-      </Row>
+        <h1 className="my-5">Here are your 25 favorite cards.</h1>
+        <Row>
+          {error && <h1>{error}</h1>}
+          {user.pokemonDeck
+            ? user.pokemonDeck.map((item) => (
+                <div className="m-5">
+                  <UserDeckCard card={item} />
+                </div>
+              ))
+            : loading && <h1>Loading</h1>}
+        </Row>
+      </Container>
     </div>
   );
 };

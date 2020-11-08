@@ -111,7 +111,24 @@ const addPokemon = asyncHandler(async (req, res) => {
       flavorText1: req.body.flavorText1,
     };
 
-    user.pokemonDeck.push(pokemon);
+    //check if the pokemon already exists in the deck
+    let pokemonExists = user.pokemonDeck.some(
+      (pokemon) => pokemon.id === req.body.id
+    );
+
+    //if the pokemon exists, dont add it
+    //else, add it
+    if (pokemonExists) {
+      return res.status(400);
+    } else {
+      user.pokemonDeck.push(pokemon);
+    }
+
+    //limits the deck to 25 cards
+    if (user.pokemonDeck.length >= 26) {
+      user.pokemonDeck.pop();
+    }
+
     await user.save();
     res.status(201).json({ message: "Pokemon added to deck" });
   } else {
