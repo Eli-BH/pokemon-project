@@ -8,6 +8,8 @@ import {
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
+  USER_DETAILS_RESET,
+  USER_LOGOUT,
 } from "../constants/userConstants";
 
 //reducer for login
@@ -25,6 +27,10 @@ export const userLoginReducer = (state = {}, action) => {
     case USER_LOGIN_FAIL:
       return { loading: false, error: action.payload };
 
+    //user logout
+    case USER_LOGOUT:
+      return {};
+
     //user logout , clear persisted state
     default:
       return state;
@@ -33,7 +39,7 @@ export const userLoginReducer = (state = {}, action) => {
 
 //reducer for register
 export const userRegisterReducer = (state = {}, action) => {
-  switch (action.payload) {
+  switch (action.type) {
     //user details post, req
     case USER_REGISTER_REQUEST:
       return { loading: true };
@@ -57,6 +63,8 @@ export const userDetailsReducer = (state = { user: {} }, action) => {
       return { loading: false, user: action.payload };
     case USER_DETAILS_FAIL:
       return { loading: false, error: action.payload };
+    case USER_DETAILS_RESET:
+      return {};
     default:
       return state;
   }

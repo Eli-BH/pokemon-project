@@ -3,8 +3,23 @@ import { CgPokemon } from "react-icons/cg";
 import { MdPerson } from "react-icons/md";
 import { Nav, Navbar, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { withRouter } from "react-router-dom";
 
-const NavBar = () => {
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../actions/userActions";
+
+const NavBar = ({ history }) => {
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    history.push("/");
+  };
+
   return (
     <Navbar bg="danger" variant="dark" fixed="top">
       <Navbar.Brand href="/">
@@ -24,14 +39,20 @@ const NavBar = () => {
           </Nav.Link>
         </LinkContainer>
 
-        <LinkContainer to="/login">
-          <Button variant="primary" size="sm" className="mx-4">
-            Login
+        {userInfo ? (
+          <Button variant="dark" size="md" onClick={handleLogout}>
+            Logout
           </Button>
-        </LinkContainer>
+        ) : (
+          <LinkContainer to="/login">
+            <Button variant="primary" size="sm">
+              Login
+            </Button>
+          </LinkContainer>
+        )}
       </Nav>
     </Navbar>
   );
 };
 
-export default NavBar;
+export default withRouter(NavBar);
