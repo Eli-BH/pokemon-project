@@ -62,7 +62,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc Update user profile
+// @desc  user profile
 // @route PUT /api/users/profile
 // @access Private
 const getUserProfile = asyncHandler(async (req, res) => {
@@ -81,8 +81,47 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
+//@desc add pokemon to user deck
+//@route PUT /api/user/profile
+//@acess Private
+
+const addPokemon = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  //added a max to the amount of pokemon allowed in desk
+
+  if (user) {
+    const pokemon = {
+      pokemonName: req.body.pokemonName,
+      type0: req.body.type0,
+      type1: req.body.type1,
+      sprite: req.body.sprite,
+      height: req.body.height,
+      weight: req.body.weight,
+      baseExperience: req.body.baseExperience,
+      baseStat0: req.body.baseStat0,
+      baseStat1: req.body.baseStat1,
+      baseStat2: req.body.baseStat2,
+      baseStat3: req.body.baseStat3,
+      baseStat4: req.body.baseStat4,
+      baseStat5: req.body.baseState5,
+      habitat: req.body.habitat,
+      flavorText0: req.body.flavorText0,
+      flavorText1: req.body.flavorText1,
+    };
+
+    user.pokemonDeck.push(pokemon);
+    await user.save();
+    res.status(201).json({ message: "Pokemon added to deck" });
+  } else {
+    res.status(400);
+    throw new Error("User not found");
+  }
+});
+
 module.exports = {
   registerUser: registerUser,
   authUser: authUser,
   getUserProfile: getUserProfile,
+  addPokemon: addPokemon,
 };

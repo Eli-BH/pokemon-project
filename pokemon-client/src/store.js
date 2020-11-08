@@ -13,6 +13,7 @@ import {
   userRegisterReducer,
   userLoginReducer,
   userDetailsReducer,
+  userAddPokemonReducer,
 } from "./reducers/userReducers";
 
 //reducers
@@ -22,6 +23,7 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userLogin: userLoginReducer,
   userDetails: userDetailsReducer,
+  userAddPokemon: userAddPokemonReducer,
 });
 
 //check if there is information in the local storage

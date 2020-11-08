@@ -10,6 +10,9 @@ import {
   USER_DETAILS_FAIL,
   USER_DETAILS_RESET,
   USER_LOGOUT,
+  USER_ADD_POKEMON_REQUEST,
+  USER_ADD_POKEMON_SUCCESS,
+  USER_ADD_POKEMON_FAIL,
 } from "../constants/userConstants";
 
 //reducer for login
@@ -43,12 +46,15 @@ export const userRegisterReducer = (state = {}, action) => {
     //user details post, req
     case USER_REGISTER_REQUEST:
       return { loading: true };
+
     //user details post, res
     case USER_REGISTER_SUCCESS:
       return { loading: false, userInfo: action.payload };
+
     //user detail post fail res
     case USER_REGISTER_FAIL:
       return { loading: false, error: action.payload };
+
     default:
       return state;
   }
@@ -59,12 +65,32 @@ export const userDetailsReducer = (state = { user: {} }, action) => {
   switch (action.payload) {
     case USER_DETAILS_REQUEST:
       return { ...state, loading: true };
+
     case USER_DETAILS_SUCCESS:
       return { loading: false, user: action.payload };
+
     case USER_DETAILS_FAIL:
       return { loading: false, error: action.payload };
+
     case USER_DETAILS_RESET:
       return {};
+
+    default:
+      return state;
+  }
+};
+
+export const userAddPokemonReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_ADD_POKEMON_REQUEST:
+      return { loading: true };
+
+    case USER_ADD_POKEMON_SUCCESS:
+      return { loading: false, success: true };
+
+    case USER_ADD_POKEMON_FAIL:
+      return { loading: false, erro: action.payload };
+
     default:
       return state;
   }

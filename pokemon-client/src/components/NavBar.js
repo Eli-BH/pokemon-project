@@ -30,14 +30,16 @@ const NavBar = ({ history }) => {
       </Navbar.Brand>
 
       <Nav className="ml-auto mr-1">
-        <LinkContainer to="/profile">
-          <Nav.Link>
-            <span>
-              <MdPerson />{" "}
-            </span>{" "}
-            Profile
-          </Nav.Link>
-        </LinkContainer>
+        {userInfo ? (
+          <LinkContainer to="/profile">
+            <Nav.Link>
+              <span>
+                <MdPerson />{" "}
+              </span>{" "}
+              Profile
+            </Nav.Link>
+          </LinkContainer>
+        ) : null}
 
         {userInfo ? (
           <Button variant="dark" size="md" onClick={handleLogout}>

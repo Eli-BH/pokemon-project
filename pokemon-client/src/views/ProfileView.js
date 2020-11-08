@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-const ProfileView = () => {
+const ProfileView = ({ history }) => {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  useEffect(() => {
+    if (!userInfo) {
+      history.push("/");
+    }
+  }, [userInfo, history]);
+
   return (
     <div className="my-5">
       <h1 className="my-5">Username</h1>

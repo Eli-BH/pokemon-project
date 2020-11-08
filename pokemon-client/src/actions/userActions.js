@@ -10,6 +10,9 @@ import {
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL,
   USER_LOGOUT,
+  USER_ADD_POKEMON_REQUEST,
+  USER_ADD_POKEMON_SUCCESS,
+  USER_ADD_POKEMON_FAIL,
 } from "../constants/userConstants";
 import axios from "axios";
 
@@ -120,4 +123,21 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: USER_DETAILS_RESET });
+};
+
+export const addPokemon = (pokemon) => async (dispatch, getState) => {
+  dispatch({
+    type: USER_ADD_POKEMON_REQUEST,
+  });
+
+  const {
+    userLogin: { userInfo },
+  } = getState();
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userInfo.token}`,
+    },
+  };
 };
