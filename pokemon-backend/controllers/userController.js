@@ -92,6 +92,7 @@ const addPokemon = asyncHandler(async (req, res) => {
 
   if (user) {
     const pokemon = {
+      id: req.body.id,
       pokemonName: req.body.pokemonName,
       type0: req.body.type0,
       type1: req.body.type1,
@@ -104,7 +105,7 @@ const addPokemon = asyncHandler(async (req, res) => {
       baseStat2: req.body.baseStat2,
       baseStat3: req.body.baseStat3,
       baseStat4: req.body.baseStat4,
-      baseStat5: req.body.baseState5,
+      baseStat5: req.body.baseStat5,
       habitat: req.body.habitat,
       flavorText0: req.body.flavorText0,
       flavorText1: req.body.flavorText1,

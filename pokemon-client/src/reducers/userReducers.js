@@ -89,7 +89,7 @@ export const userAddPokemonReducer = (state = {}, action) => {
       return { loading: false, success: true };
 
     case USER_ADD_POKEMON_FAIL:
-      return { loading: false, erro: action.payload };
+      return { loading: false, error: action.payload };
 
     default:
       return state;

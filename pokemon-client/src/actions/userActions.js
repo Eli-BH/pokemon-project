@@ -126,18 +126,31 @@ export const logout = () => (dispatch) => {
 };
 
 export const addPokemon = (pokemon) => async (dispatch, getState) => {
-  dispatch({
-    type: USER_ADD_POKEMON_REQUEST,
-  });
+  try {
+    dispatch({
+      type: USER_ADD_POKEMON_REQUEST,
+    });
 
-  const {
-    userLogin: { userInfo },
-  } = getState();
+    const {
+      userLogin: { userInfo },
+    } = getState();
 
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${userInfo.token}`,
-    },
-  };
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    axios.post(`/api/users/profile`, pokemon, config);
+
+    dispatch({
+      type: USER_ADD_POKEMON_SUCCESS,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_ADD_POKEMON_FAIL,
+      payload: error,
+    });
+  }
 };

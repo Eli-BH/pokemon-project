@@ -21,18 +21,51 @@ import EvolutionChainAccordion from "../components/EvolutionChainAccordion";
 import EggGroupsAccordion from "../components/EggGroupsAccordion";
 import Loader from "../components/Loader";
 
+import { addPokemon } from "../actions/userActions";
+
 const PokeProfileView = ({ match }) => {
   const disptach = useDispatch();
 
   const getSinglePokemon = useSelector((state) => state.getSinglePokemon);
   const { error, loading, pokemon, success } = getSinglePokemon;
 
+  const userAddPokemon = useSelector((state) => state.userAddPokemon);
+  const {
+    error: addPokemonError,
+    loading: addPokemonLoading,
+    success: addPokemonSuccess,
+  } = userAddPokemon;
+
   useEffect(() => {
     disptach(getSinglePokemonAction(match.params.id));
   }, [disptach, match.params.id]);
 
-  const handleAddToDeckButton = () => {
-    success && alert(pokemon.stats.height);
+  const handleAddToDeckButton = (e) => {
+    e.preventDefault();
+
+    //named it card as in pokemon card
+
+    const card = {
+      id: pokemon.stats.id,
+      pokemonName: pokemon.stats.name,
+      type0: pokemon.stats.types[0].type.name,
+      type1: pokemon.stats.types[1] ? pokemon.stats.types[1].type.name : null,
+      sprite: pokemon.stats.sprites.front_default,
+      height: pokemon.stats.height,
+      weight: pokemon.stats.weight,
+      baseExperience: pokemon.stats.base_experience,
+      baseStat0: pokemon.stats.stats[0].base_stat,
+      baseStat1: pokemon.stats.stats[1].base_stat,
+      baseStat2: pokemon.stats.stats[2].base_stat,
+      baseStat3: pokemon.stats.stats[3].base_stat,
+      baseStat4: pokemon.stats.stats[4].base_stat,
+      baseStat5: pokemon.stats.stats[5].base_stat,
+      habitat: pokemon.info.habitat.name,
+      flavorText0: pokemon.info.flavor_text_entries[1].flavor_text,
+      flavorText1: pokemon.info.flavor_text_entries[3].flavor_text,
+    };
+
+    disptach(addPokemon(card));
   };
 
   return (
@@ -55,7 +88,11 @@ const PokeProfileView = ({ match }) => {
                   {pokemon.stats.name.charAt(0).toUpperCase() +
                     pokemon.stats.name.slice(1)}
                 </h1>
-                <Button varaint="info" onClick={handleAddToDeckButton}>
+                <Button
+                  variant="danger"
+                  className="mt-3"
+                  onClick={handleAddToDeckButton}
+                >
                   Add to deck
                 </Button>
               </Col>
