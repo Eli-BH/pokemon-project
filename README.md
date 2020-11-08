@@ -27,7 +27,7 @@
 - [Deployment](#deployment)
 - [Usage](#usage)
 - [Built Using](#built_using)
-- [TODO](../TODO.md)
+- [TODO](https://github.com/Eli-BH/pokemon-project/projects)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
 
@@ -94,6 +94,10 @@ On the pokemon profile page, there is a button under the pokemon name that allow
 'Card deck' in the user profile. The card deck has a maximum of 25 cards.
 
 In the user profile, the cards in the card deck are flippable as well, and have a delete button and bring the user to the pokemon profile.
+
+DEMO
+
+![DEMO](https://media.giphy.com/media/4Iew4Xl6HPjSZeJh4i/giphy.gif)
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
