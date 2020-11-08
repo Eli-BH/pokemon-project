@@ -17,10 +17,12 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
+    "start": "node pokemon-backend/server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon pokemon-backend/server",
     "client": "npm start --prefix pokemon-client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix pokemon-client && npm run build --prefix pokemon-client"
   },
   "repository": {
     "type": "git",
