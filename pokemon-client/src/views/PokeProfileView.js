@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSinglePokemonAction } from "../actions/pokemonActions";
-import { Row, Col, Container, Image, Button } from "react-bootstrap";
+import { Row, Col, Container, Image, Button, Modal } from "react-bootstrap";
 
 import "../styles/profileStyles.css";
 import Stats from "../components/Stats";
@@ -24,6 +24,8 @@ import Loader from "../components/Loader";
 import { addPokemon } from "../actions/userActions";
 
 const PokeProfileView = ({ match }) => {
+  const [showModal, setShowModal] = useState(false);
+
   const disptach = useDispatch();
 
   const getSinglePokemon = useSelector((state) => state.getSinglePokemon);
@@ -66,10 +68,33 @@ const PokeProfileView = ({ match }) => {
     };
 
     disptach(addPokemon(card));
+    setShowModal(true);
   };
 
   return (
     <div className="my-5">
+      {addPokemonSuccess && (
+        <Modal
+          centered
+          size="sm"
+          show={showModal}
+          onHide={() => setShowModal(false)}
+        >
+          <Modal.Body as="Alert" variant="success">
+            Pokemon added to deck
+          </Modal.Body>
+        </Modal>
+      )}
+      {addPokemonError && (
+        <Modal
+          centered
+          size="sm"
+          show={showModal}
+          onHide={() => setShowModal(false)}
+        >
+          <Modal.Body as="Alert">{addPokemonError}</Modal.Body>
+        </Modal>
+      )}
       {/* <h1>{`Hello from the Pokefile view ${match.params.id}`}</h1> */}
       <Container className="mt-5">
         <Row className="row-1">
@@ -88,6 +113,7 @@ const PokeProfileView = ({ match }) => {
                   {pokemon.stats.name.charAt(0).toUpperCase() +
                     pokemon.stats.name.slice(1)}
                 </h1>
+
                 <Button
                   variant="danger"
                   className="mt-3"

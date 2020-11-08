@@ -120,9 +120,28 @@ const addPokemon = asyncHandler(async (req, res) => {
   }
 });
 
+const deletePokemon = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.pokemonDeck = user.pokemonDeck.filter(
+      (deck) => deck.pokemonName != req.body.pokemonName
+    );
+
+    await user.save();
+    res
+      .status(202)
+      .json({ message: `${req.body.pokemonName} deleted from deck` });
+  } else {
+    res.status(400);
+    throw new Error("User not found");
+  }
+});
+
 module.exports = {
   registerUser: registerUser,
   authUser: authUser,
   getUserProfile: getUserProfile,
   addPokemon: addPokemon,
+  deletePokemon: deletePokemon,
 };
