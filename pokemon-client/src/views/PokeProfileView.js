@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSinglePokemonAction } from "../actions/pokemonActions";
-import { Row, Col, Container, Image } from "react-bootstrap";
+import { Row, Col, Container, Image, Button } from "react-bootstrap";
 
 import "../styles/profileStyles.css";
 import Stats from "../components/Stats";
@@ -31,6 +31,10 @@ const PokeProfileView = ({ match }) => {
     disptach(getSinglePokemonAction(match.params.id));
   }, [disptach, match.params.id]);
 
+  const handleAddToDeckButton = () => {
+    success && alert(pokemon.stats.height);
+  };
+
   return (
     <div className="my-5">
       {/* <h1>{`Hello from the Pokefile view ${match.params.id}`}</h1> */}
@@ -51,6 +55,9 @@ const PokeProfileView = ({ match }) => {
                   {pokemon.stats.name.charAt(0).toUpperCase() +
                     pokemon.stats.name.slice(1)}
                 </h1>
+                <Button varaint="info" onClick={handleAddToDeckButton}>
+                  Add to deck
+                </Button>
               </Col>
             )
           )}
