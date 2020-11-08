@@ -28,7 +28,6 @@
 - [Usage](#usage)
 - [Built Using](#built_using)
 - [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
 
@@ -103,7 +102,7 @@ In the user profile, the cards in the card deck are flippable as well, and have 
 - [ReactJs](https://reactjs.org/) - Web Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 - [PokéAPI](https://pokeapi.co/) - Pokémon data api
-- [ReactBootstrap] (https://react-bootstrap.github.io/) - Front-End framework
+- [ReactBootstrap](https://react-bootstrap.github.io/) - Front-End framework
 
 ## ✍️ Authors <a name = "authors"></a>
 
