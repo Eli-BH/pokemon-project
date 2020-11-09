@@ -1,7 +1,7 @@
 .card-container {
   margin: auto;
   width: 400px;
-  height: 600px;
+  height: 750px;
   border: black solid 2px;
   background-color: #ffbf00;
   border-radius: 14px;
@@ -9,7 +9,6 @@
   display: flex;
   box-shadow: 10px 12px 20px 1px rgb(97, 95, 71);
 }
-
 
 .card-face {
   margin: auto;
@@ -211,7 +210,7 @@
 .card-container-back {
   margin: auto;
   width: 400px;
-  height: 600px;
+  height: 750px;
   border: black solid 2px;
   background-color: #032f7e;
   border-radius: 14px;
@@ -223,7 +222,7 @@
 .card-back {
   margin: auto;
   width: 370px;
-  height: 570px;
+  height: 720px;
   border: solid 1px black;
   background-color: orange;
   background-image: url("https://i.imgur.com/YfRarvn.jpg");

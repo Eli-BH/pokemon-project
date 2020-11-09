@@ -13,7 +13,7 @@ const RegisterView = ({ history }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
 
-  const disptach = useDispatch();
+  const dispatch = useDispatch();
 
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
@@ -28,7 +28,7 @@ const RegisterView = ({ history }) => {
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
     } else {
-      disptach(register(username, email, password));
+      dispatch(register(username, email, password));
     }
   };
 

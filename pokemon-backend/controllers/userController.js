@@ -49,12 +49,15 @@ const registerUser = asyncHandler(async (req, res) => {
     password,
   });
 
+  user.token = generateToken(user._id);
+
   if (user) {
     res.status(201).json({
       _id: user._id,
       username: user.username,
       email: user.email,
       pokemonDeck: user.pokemonDeck,
+      token: user.token,
     });
   } else {
     res.status(400);

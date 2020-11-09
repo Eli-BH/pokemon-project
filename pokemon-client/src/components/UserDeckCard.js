@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
 import ReactCardFlip from "react-card-flip";
-import { deletePokemon } from "../actions/userActions";
+import { deletePokemon, getUserDetails } from "../actions/userActions";
 
 const UserDeckCard = ({ card }) => {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ const UserDeckCard = ({ card }) => {
   const handleDelete = (e) => {
     e.preventDefault();
     dispatch(deletePokemon({ id: card.id }));
+    dispatch(getUserDetails());
   };
 
   return (
